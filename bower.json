@@ -1,0 +1,22 @@
+{
+  "name": "toggle-span",
+  "homepage": "https://github.com/vivqu/toggle-span",
+  "authors": [
+    "Vivian Qu <https://github.com/vivqu>"
+  ],
+  "description": "Custom polymer element that hides or unhides other spans when you click links.",
+  "main": "toggle-span.html",
+  "keywords": [
+    "toggle",
+    "span",
+    "element"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,180 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-if.html">
+
+<dom-module id="toggle-span">
+  <template>
+    <style>
+      span {
+        word-wrap: break-word;
+        line-height: 1.5em;
+        font-size: 16px;
+      }
+      span[class="hidden"] {
+        display: none;
+      }
+      span[class="animateIn"] {
+        -webkit-animation: fadein 1.2s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 1.2s; /* Firefox < 16 */
+        -ms-animation: fadein 1.2s; /* Internet Explorer */
+        -o-animation: fadein 1.2s; /* Opera < 12.1 */
+        animation: fadein 1.2s;
+      }
+      @keyframes fadein {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      span[class="highlight"] {
+        color: #00BFC4;
+        text-decoration-color: #00BFC4;
+      }
+      ::slotted([slot=pretext]) {
+        color: black;
+      }
+      ::slotted([slot=posttext]) {
+        color: black;
+      }
+      a {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      a.clicked {
+        text-decoration: none;
+        cursor: text;
+      }
+    </style>
+    <span class$="{{_setOpenedClass(didOpen, highlighted, clicked)}}">
+        <span class$="{{_shouldHighlight(highlighted)}}"><!--
+        --><template is="dom-if" if="{{!noLink}}"><!--
+        --><slot name="pretext"></slot><!--
+          --><a id=test data-opensId="[[opensId]]" class$="[[_setLinkClass(clicked)]]"><!--
+                --><slot></slot><!--
+              --></a><!--
+            --><slot name="posttext"></slot><!--
+        --></template><!--
+        --><template is="dom-if" if="{{noLink}}"><slot></slot></template><!--
+      --></span><!--
+    --></span>
+  </template>
+
+  <script>
+    class ToggleSpan extends Polymer.Element {
+      static get is() { return "toggle-span"; }
+      static get properties() {
+        return {
+          openedById: Number,
+          opensId: Number,
+          closedById: Number,
+          noLink: {
+            type: Boolean,
+            value: false,
+          },
+          didOpen: {
+            type: Boolean,
+            value: false,
+          },
+          clicked: {
+            type: Boolean,
+            value: false,
+          },
+          highlighted: {
+            type: Boolean,
+            value: false,
+          },
+          noAnimation: {
+            type: Boolean,
+            value: false,
+          },
+          showAnimation: {
+            type: Boolean,
+            value: true,
+          }
+        };
+      }
+
+      ready() {
+        super.ready();
+        this.addEventListener('click', this._handleClick);
+        this.addEventListener('mouseover', this._hoverLink);
+        this.addEventListener('mouseout', this._removeHoverLink);
+      }
+
+      _setOpenedClass(didOpen, highlighted, clicked) {
+        if (!didOpen) {
+          return "hidden";
+        }
+        return (this.showAnimation && !this.noAnimation) ? "animateIn" : "noAnimationx";
+      }
+
+      _shouldHighlight(highlighted) {
+        return highlighted ? "highlight" : "default";
+      }
+
+      _setLinkClass(clicked) {
+        return clicked ? "clicked" : "none";
+      }
+
+      _hoverLink(e) {
+        if (e.target.slot) {
+          return;
+        }
+        if (!this.clicked && !this.noLink) {
+          this.highlighted = true;
+          this.showAnimation = false;
+          this.dispatchEvent(
+            new CustomEvent('link-hover', {bubbles: true, composed: true})
+          );
+        }
+      }
+
+      _removeHoverLink(e) {
+        if (e.target.slot) {
+          return;
+        }
+        if (!this.clicked && !this.noLink) {
+          this.highlighted = false;
+          this.dispatchEvent(
+            new CustomEvent('remove-link-hover', {bubbles: true, composed: true})
+          );
+        }
+      }
+
+      _handleClick(e) {
+        if (e.target.slot) {
+          return;
+        }
+        this.clicked = true;
+        this.highlighted = false;
+        this.removeEventListener('click', this._handleClick);
+        this.dispatchEvent(
+          new CustomEvent('open-span', {bubbles: true, composed: true})
+        );
+      }
+
+      shouldOpenWithId(openedById) {
+        if (!this.didOpen && this.openedById != null) {
+          var didOpen = (openedById == this.openedById);
+          this.didOpen = didOpen;
+          return didOpen;
+        }
+        return false;
+      }
+
+      shouldCloseWithId(closedById) {
+        if (this.didOpen && this.closedById != null) {
+          var didOpen = !(closedById == this.closedById);
+          this.didOpen = didOpen;
+          return closedById == this.closedById;
+        }
+        return false;
+      }
+
+      setHighlightState(shouldHighlight) {
+        this.highlighted = shouldHighlight;
+        if (!shouldHighlight) {
+          this.showAnimation = false;
+        }
+      }
+    }
+    customElements.define(ToggleSpan.is, ToggleSpan);
+  </script>
+</dom-module>
