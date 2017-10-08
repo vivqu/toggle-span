@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>toggle-span tutorial</title>
+    <meta name="description" content="Demo app for toggle-span custom element.">
+    <link rel="import" href="./toggle-span.html">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+    <style>
+      p {
+        font-family: "Lato", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+            <!-- [[Hello world]]! -->
+            <toggle-span opened-by-id=11 opens-id=12 did-open>
+              <span>Hello world</span><span slot="posttext">!</span><!--
+            --></toggle-span>
+            <!-- This is a [[custom element]] that let's-->
+            <toggle-span opened-by-id=12 opens-id=13>
+              <span slot="pretext">This is a </span>
+              <span>custom element</span><!--
+              --><span slot="posttext"> that let's</span><!--
+            --></toggle-span>
+            <!-- [[you]] toggle-->
+            <toggle-span opened-by-id=12 opens-id=14>
+              <span>you</span><span slot="posttext"> toggle</span><!--
+            --></toggle-span>
+            <!-- things. -->
+            <toggle-span opened-by-id=12 closed-by-id=13 no-link>things.</toggle-span>
+            <!-- spans. -->
+            <toggle-span opened-by-id=13 no-link>spans.</toggle-span>
+            <!-- Please -->
+            <toggle-span opened-by-id=14 no-link>Please</toggle-span>
+            <!-- [[various adverbs]] -->
+            <toggle-span opened-by-id=14 opens-id=15 closed-by-id=15>enjoy</toggle-span>
+            <toggle-span opened-by-id=15 opens-id=16 closed-by-id=16>delight in</toggle-span>
+            <toggle-span opened-by-id=16 opens-id=17 closed-by-id=17>take your time</toggle-span>
+            <toggle-span opened-by-id=17 opens-id=18 closed-by-id=18>think about</toggle-span>
+            <toggle-span opened-by-id=18 opens-id=19 closed-by-id=19>watch carefully when</toggle-span>
+            <toggle-span opened-by-id=19 opens-id=20 closed-by-id=20>eat slowly</toggle-span>
+            <toggle-span opened-by-id=20 opens-id=21>try all approaches while</toggle-span>
+            <!-- using this for your -->
+            <toggle-span opened-by-id=14 no-link>using this for your</toggle-span>
+            <!--(various direct objects). -->
+            <toggle-span opened-by-id=14 closed-by-id=15 no-link>website.</toggle-span>
+            <toggle-span opened-by-id=15 closed-by-id=16 no-link>mobile website.</toggle-span>
+            <toggle-span opened-by-id=16 closed-by-id=17 no-link>smart watches.</toggle-span>
+            <toggle-span opened-by-id=17 closed-by-id=18 no-link>brain implants.</toggle-span>
+            <toggle-span opened-by-id=18 closed-by-id=19 no-link>immersive VR games.</toggle-span>
+            <toggle-span opened-by-id=19 closed-by-id=20 no-link>soup flavoring.</toggle-span>
+            <toggle-span opened-by-id=20 no-link>creative adventures.</toggle-span>
+            <!-- Have fun now! -->
+            <toggle-span opened-by-id=21 no-link>Have fun now!</toggle-span>
+          </p>
+  </body>
+  <script src="./toggle-span.js"></script>
+</html>
