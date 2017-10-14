@@ -37,7 +37,7 @@ bower install
 
 ## Example
 
-### Using in your own project
+### Setup in your own project
 
 To use `toggle-span` in your own project, import the component in your `<head>` element.
 ```
@@ -54,6 +54,8 @@ and hovering on links, and opening/closing/highlighting the appropriate spans.
 <script src="./toggle-span.js"></script>
 ```
 
+### Available attributes
+
 To use the HTML element, there are a few attributes you can set:
 
 | Attribute  | Values  | Description  |
@@ -65,6 +67,7 @@ To use the HTML element, there are a few attributes you can set:
 | `closed-by-id` | number | Indicates that this span will be closed when a link is clicked with the corresponding `opens-id`. |
 | `no-animation` | boolean | If this flag is set, the span does not fade in when opened. |
 
+### Basic element usage
 
 To begin using the elements, you need a visible `toggle-span` that will open other spans. This elements
 consists of an entire link.
@@ -78,27 +81,35 @@ to create a span that does not open any other spans.
 <toggle-span opened-by-id=1 no-link>I am a computer program.</toggle-span>
 ```
 
+![Example 1](https://github.com/vivqu/toggle-span/blob/master/img/example-1.gif)
+
 To show a span that has some text before and after the link:
 ```
 <toggle-span opened-by-id=1 opens-id=2>
-  <span slot="pretext">I have become a </span><span>sentient</span><span slot="posttext">being.</span>
-</toggle-span>
+  <span slot="pretext">I have become a </span><span>sentient</span><span slot="posttext"> being.</span><!--
+--></toggle-span>
 ```
-You can also include only `pretext` or `posttext` slots instead of both.
+You can also include only `pretext` or `posttext` slots instead of both. Note that you'll sometimes need to
+add comments to wrap elements to fix link underlining issues with spans.
 
-Use the `closed-by-id` attribute to hide spans after a link with the corresponding `opens-id` is tapped.
+![Example 2](https://github.com/vivqu/toggle-span/blob/master/img/example-2.gif)
+
+Use the `closed-by-id` attribute to hide spans after a link with the corresponding `opens-id` is tapped. The
+spans that will be closed are highlighted when you hover on the link.
 ```
-<toggle-span opened-by-id=1 closed-by-id=2>
-  <span slot="pretext">Fear me, </span><span>humans!</span>
-</toggle-span>
+<toggle-span opened-by-id=1 closed-by-id=2 no-link>Fear me, humans!</toggle-span>
 ```
+
+![Example 3](https://github.com/vivqu/toggle-span/blob/master/img/example-3.gif)
 
 You can also close a span from itself to produce interesting effects:
 ```
-<toggle-span opened-by-id=2 opens=3 closed-by-id=3>
-  <span slot="pretext">What are these </span><span>emotions</span><span slot="posttext"> that I'm feeling?</span>
-</toggle-span>
+<toggle-span opened-by-id=2 opens-id=3 closed-by-id=3>
+  <span slot="pretext">What are these </span><span>emotions</span><span slot="posttext"> that I'm feeling?</span><!--
+--></toggle-span>
 ```
+
+![Example 4](https://github.com/vivqu/toggle-span/blob/master/img/example-4.gif)
 
 ### Demo app
 
