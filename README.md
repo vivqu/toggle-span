@@ -122,7 +122,7 @@ Open the corresponding localhost URL to try out the demo. Usually it is [localho
 
 ## Author
 
-* **Vivian Qu** - [hello@vivqu.com](https://github.com/PurpleBooth)
+* **Vivian Qu** - [hello@vivqu.com](mailto:hello@vivqu.com)
 
 ## License
 
