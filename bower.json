@@ -15,6 +15,7 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "img",
     "index.html",
     "node_modules",
     "bower_components",
