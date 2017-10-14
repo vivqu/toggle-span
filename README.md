@@ -8,6 +8,8 @@ text that gives the impression of having a conversation with the creator of the 
 `toggle-span` uses Polymer 2.0 to create a custom reusable HTML element. For more information on why Polymer is useful,
 read more [here](https://www.polymer-project.org/about).
 
+
+
 ## Installation
 
 Since Polymer relies on [Bower](https://bower.io), we also made this element also installable through Bower.
@@ -35,7 +37,7 @@ bower install
 
 ### Using in your own project
 
-To use `toggle-span` in your own project, import the component in your `<head>` element.`
+To use `toggle-span` in your own project, import the component in your `<head>` element.
 ```
 <head>
   <link rel="import" href="some/path/to/toggle-span.html">
@@ -60,6 +62,7 @@ To use the HTML element, there are a few attributes you can set:
 | `opened-by-id` | number | Indicates that this span will be opened when a link is clicked with the corresponding `opens-id`. |
 | `closed-by-id` | number | Indicates that this span will be closed when a link is clicked with the corresponding `opens-id`. |
 | `no-animation` | boolean | If this flag is set, the span does not fade in when opened. |
+
 
 To begin using the elements, you need a visible `toggle-span` that will open other spans. This elements
 consists of an entire link.
