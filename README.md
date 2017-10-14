@@ -8,7 +8,9 @@ text that gives the impression of having a conversation with the creator of the 
 `toggle-span` uses Polymer 2.0 to create a custom reusable HTML element. For more information on why Polymer is useful,
 read more [here](https://www.polymer-project.org/about).
 
+Here's a little sneak peek of the demo app:
 
+![Demo of the toggle-span element](https://github.com/vivqu/toggle-span/blob/master/img/demo_gif.gif)
 
 ## Installation
 
