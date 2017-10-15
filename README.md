@@ -20,19 +20,10 @@ Since Polymer relies on [Bower](https://bower.io), we also made this element als
 ```
 npm install -g bower
 ```
-2. Install the Polymer CLI using the below command, or follow the instructions in the Polymer [docs](https://www.polymer-project.org/2.0/start/install-2-0).
-```
-npm install -g polymer-cli
-```
-3. Clone the repository
-```
-git clone https://github.com/vivqu/toggle-span.git
-```
 
-4. Install `toggle-span` dev dependencies from the root directory. This command reads from the `bower.json`
-file to automatically install Polymer and other related dependencies.
+2. Install `toggle-span` using Bower.
 ```
-bower install
+bower install --save toggle-span
 ```
 
 ## Example
