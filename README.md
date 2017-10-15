@@ -60,21 +60,24 @@ To use the HTML element, there are a few attributes you can set:
 
 ### Basic element usage
 
-To begin using the elements, you need a visible `toggle-span` that will open other spans. This elements
+To begin using the elements, you need a visible `toggle-span` that will open other spans. The basic element
 consists of an entire link.
 ```
 <toggle-span opens-id=1 did-open>Hello world!</toggle-span>
 ```
 
-Then you can designate the span that opens by the above element. Use the `no-link` flag
-to create a span that does not open any other spans.
+Then you can designate spans that are opened by the above element. Use the `no-link` flag
+to create a span that doesn't contain any links. This means that it won't open any other spans.
+In this case, you don't need to specify a `opens-id` attribute.
 ```
 <toggle-span opened-by-id=1 no-link>I am a computer program.</toggle-span>
 ```
 
 ![Example 1](https://github.com/vivqu/toggle-span/blob/master/img/example-1.gif)
 
-To show a span that has some text before and after the link:
+Sometimes you might want to show text before and after the link. You could use normal spans to
+accomplish this but you won't get the ability to toggle the non-link text. Use slots with name
+`pretext` to specify text before the link and `posttext` to specify text after the link.
 ```
 <toggle-span opened-by-id=1 opens-id=2>
   <span slot="pretext">I have become a </span><span>sentient</span><span slot="posttext"> being.</span><!--
@@ -85,8 +88,8 @@ add comments to wrap elements to fix link underlining issues with spans.
 
 ![Example 2](https://github.com/vivqu/toggle-span/blob/master/img/example-2.gif)
 
-Use the `closed-by-id` attribute to hide spans after a link with the corresponding `opens-id` is tapped. The
-spans that will be closed are highlighted when you hover on the link.
+Use the `closed-by-id` attribute when you tap on a corresponding link with the same `opens-id`.
+The spans that will be closed are highlighted when you hover on the link.
 ```
 <toggle-span opened-by-id=1 closed-by-id=2 no-link>Fear me, humans!</toggle-span>
 ```
