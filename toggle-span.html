@@ -4,11 +4,6 @@
 <dom-module id="toggle-span">
   <template>
     <style>
-      span {
-        word-wrap: break-word;
-        line-height: 1.5em;
-        font-size: 16px;
-      }
       span[class="hidden"] {
         display: none;
       }
@@ -24,14 +19,14 @@
         to { opacity: 1; }
       }
       span[class="highlight"] {
-        color: #00BFC4;
-        text-decoration-color: #00BFC4;
+        color: var(--toggle-span-highlight-color, #00BFC4);
+        text-decoration-color: var(--toggle-span-highlight-color, #00BFC4);
       }
       ::slotted([slot=pretext]) {
-        color: black;
+        color: var(--toggle-span-text-color, black);
       }
       ::slotted([slot=posttext]) {
-        color: black;
+        color: var(--toggle-span-text-color, black);
       }
       a {
         text-decoration: underline;

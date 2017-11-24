@@ -105,6 +105,33 @@ You can also close a span from itself to produce interesting effects:
 
 ![Example 4](https://github.com/vivqu/toggle-span/blob/master/img/example-4.gif)
 
+### CSS Styling
+
+You can change the default text, link, and highlight color of toggle-span using Polymer CSS variables. The component style
+contains the following code:
+```
+span[class="highlight"] {
+  color: var(--toggle-span-highlight-color, #00BFC4);
+  text-decoration-color: var(--toggle-span-highlight-color, #00BFC4);
+}
+::slotted([slot=pretext]) {
+  color: var(--toggle-span-text-color, black);
+}
+::slotted([slot=posttext]) {
+  color: var(--toggle-span-text-color, black);
+}
+```
+
+You can add `is="custom-style"` tag to polyfill the color styles:
+```
+<style is="custom-style" type="text/css">
+  toggle-span {
+    --toggle-span-text-color: red;
+  }
+</style>
+```
+We have included this code snippet in the demo app below. Uncomment the code block to try it out.
+
 ### Demo app
 
 To run the included [demo](https://github.com/vivqu/toggle-span/blob/master/index.html), set up a simple
